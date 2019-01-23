@@ -1,0 +1,227 @@
+@import "./scss/variables";
+@import "./scss/mixin";
+
+:local(#{$prefix-class}) {
+  font-size: $font-size-base;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.65);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  padding: 8px 15px 8px 37px;
+  border-radius: 4px;
+  text-align: left;
+
+
+
+
+  &-no-icon {
+    padding: 8px 15px;
+  }
+
+  &-icon {
+    top: 11px;
+    left: 16px;
+    position: absolute;
+  }
+
+  &-description {
+    font-size: $font-size-base;
+    line-height: 22px;
+    display: none;
+  }
+
+  &-success {
+    @include messagebox(#b7eb8f, $success-backround, $success-color);
+  }
+
+  &-info {
+    @include messagebox(#91d5ff, $info-backround, $info-color);
+  }
+
+  &-warning {
+    @include messagebox(#ffe58f, $warning-backround, $warning-color);
+  }
+
+  &-error {
+    @include messagebox(#ffa39e, $error-backround, $error-color);
+  }
+
+
+
+  &-close-icon {
+    font-size: $font-size-sm;
+    position: absolute;
+    right: 16px;
+    color: #333;
+    top: 11px;
+    line-height: 22px;
+    overflow: hidden;
+    cursor: pointer;
+
+    &-cross {
+      color: $text-color-secondary;
+      transition: color .3s;
+
+      &:hover {
+        color: #404040;
+      }
+    }
+  }
+
+  &-close-text {
+    position: absolute;
+    right: 16px;
+  }
+
+  &-with-description {
+    padding: 15px 15px 15px 64px;
+    position: relative;
+    border-radius: 4px;
+    color: $text-color;
+    line-height: $line-height-base;
+  }
+
+  &-with-description#{&}-no-icon {
+    padding: 15px;
+  }
+
+  &-with-description &-icon {
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    font-size: 24px;
+  }
+
+  &-with-description &-close-icon {
+    top: 16px;
+  }
+
+  &-with-description &-message {
+    font-size: $font-size-lg;
+    color: $message-color;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &-with-description &-description {
+    display: block;
+  }
+
+  &-close {
+    height: 0 !important;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: all .3s $ease-in-out-circ;
+    transform-origin: 50% 0;
+  }
+
+  &-slide-up-leave {
+    animation: AlertSlideUpOut .3s $ease-in-out-circ;
+    animation-fill-mode: both;
+  }
+
+  &-closable {
+    padding-right: 30px !important;
+  }
+}
+
+@keyframes AlertSlideUpIn {
+  0% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes AlertSlideUpOut {
+  0% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleY(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleY(0);
+  }
+}
+
+.flat {
+
+  :local(&#{$prefix-class}) {
+    border-radius: 0;
+
+    &-success {
+      @include messageboxFlat($success-color-flat, $success-background-flat);
+    }
+
+    &-info {
+      @include messageboxFlat($info-color-flat, $info-background-flat);
+    }
+
+    &-warning {
+      @include messageboxFlat($warning-color-flat, $warning-background-flat);
+    }
+
+    &-error {
+      @include messageboxFlat($error-color-flat, $error-background-flat);
+    }
+
+    &-primary {
+      @include messageboxFlat($primary-color-flat, $primary-background-flat);
+    }
+
+    &-dark {
+      @include messageboxFlat(#383d41, $dark-color);
+    }
+
+    &-light {
+      @include messageboxFlat($light-color, #fff);
+    }
+  }
+}
+
+.rtl {
+  padding: 8px 37px 8px 15px;
+  text-align: right;
+
+  :local(#{$prefix-class}) {
+
+    &-icon {
+      right: 16px !important;
+      left: auto;
+    }
+
+    &-close-icon {
+      left: 16px;
+      right: auto;
+    }
+  }
+
+  :local(&#{$prefix-class}) {
+    &-with-description {
+      padding: 15px 64px 15px 15px;
+    }
+
+    &-with-description &-icon {
+      right: 24px;
+      left: auto;
+    }
+
+    &-closable {
+      padding-left: 30px !important;
+    }
+  }
+}

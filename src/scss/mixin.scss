@@ -1,0 +1,19 @@
+@mixin messagebox($border, $background, $iconcolor) {
+  border: 1px solid $border;
+  background-color: $background;
+
+  .icon {
+    color: $iconcolor;
+  }
+}
+
+@mixin messageboxFlat($color, $background) {
+  background-color: $background;
+  border: none;
+  color: $color !important;
+
+  .icon,
+  .alert_message {
+    color: $color;
+  }
+}
